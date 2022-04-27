@@ -26,7 +26,7 @@ module.exports = {
       'error',
       {
         required: {
-          every: ['nesting', 'id', 'htmlFor'],
+          every: ['nesting', 'id'],
         },
       },
     ],
