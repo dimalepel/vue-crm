@@ -7,6 +7,14 @@ module.exports = {
     'plugin:vue/vue3-essential',
     '@vue/airbnb',
   ],
+  overrides: [
+    {
+      files: ['src/views/**/*.vue'],
+      rules: {
+        'vue/multi-word-component-names': 0,
+      },
+    },
+  ],
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
