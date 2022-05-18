@@ -7,19 +7,34 @@
           id="email"
           type="text"
           v-model.trim="email"
-          :class="{ invalid: v$.email.$dirty }"
+          :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response) || (v$.email.$dirty && !v$.email.email.$response) }"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+          v-if="v$.email.$dirty && !v$.email.required.$response"
+          class="helper-text invalid"
+        >Поле Email не должно быть пустым</small>
+        <small
+          v-else-if="v$.email.$dirty && !v$.email.email.$response"
+          class="helper-text invalid"
+        >Введите корректный Email</small>
       </div>
       <div class="input-field">
         <input
           id="password"
           type="password"
-          class="validate"
+          v-model.trim="password"
+          :class="{ invalid: (v$.password.$dirty && !v$.password.required.$response) || (v$.password.$dirty && !v$.password.minLength.$response) }"
         >
         <label for="password">Пароль</label>
-        <small class="helper-text invalid">Password</small>
+        <small
+          class="helper-text invalid"
+          v-if="v$.password.$dirty && !v$.password.required.$response"
+        >Введите пароль</small>
+        <small
+          class="helper-text invalid"
+          v-else-if="v$.password.$dirty && !v$.password.minLength.$response"
+        >Пароль должен быть не менее {{ v$.password.minLength.$params.min }} символов</small>
       </div>
     </div>
     <div class="card-action">
@@ -54,10 +69,19 @@ export default {
   }),
   validations: () => ({
     email: { required, email },
-    password: { required, minLength: minLength(6) },
+    password: { required, minLength: minLength(12) },
   }),
   methods: {
-    submitHandler() {
+    async submitHandler() {
+      const isFormCorrect = await this.v$.$validate();
+      if (!isFormCorrect) {
+        return;
+      }
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log(formData);
       this.$router.push('/');
     },
   },
