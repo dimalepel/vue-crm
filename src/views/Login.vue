@@ -6,7 +6,8 @@
         <input
           id="email"
           type="text"
-          class="validate"
+          v-model.trim="email"
+          :class="{ invalid: v$.email.$dirty }"
         >
         <label for="email">Email</label>
         <small class="helper-text invalid">Email</small>
@@ -41,11 +42,19 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+import { required, email, minLength } from '@vuelidate/validators';
+
 export default {
   name: 'login',
   data: () => ({
+    v$: useVuelidate(),
     email: '',
     password: '',
+  }),
+  validations: () => ({
+    email: { required, email },
+    password: { required, minLength: minLength(6) },
   }),
   methods: {
     submitHandler() {
