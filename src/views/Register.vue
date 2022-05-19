@@ -115,8 +115,11 @@ export default {
         password: this.password,
         name: this.name,
       };
-      console.log(formData);
-      this.$router.push('/');
+
+      try {
+        await this.$store.dispatch('signup', formData);
+        this.$router.push('/');
+      } catch (e) {}
     },
   },
 };
