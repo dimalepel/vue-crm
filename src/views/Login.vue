@@ -24,17 +24,13 @@
           id="password"
           type="password"
           v-model.trim="password"
-          :class="{ invalid: (v$.password.$dirty && !v$.password.required.$response) || (v$.password.$dirty && !v$.password.minLength.$response) }"
+          :class="{ invalid: (v$.password.$dirty && !v$.password.required.$response) }"
         >
         <label for="password">Пароль</label>
         <small
           class="helper-text invalid"
           v-if="v$.password.$dirty && !v$.password.required.$response"
         >Введите пароль</small>
-        <small
-          class="helper-text invalid"
-          v-else-if="v$.password.$dirty && !v$.password.minLength.$response"
-        >Пароль должен быть не менее {{ v$.password.minLength.$params.min }} символов</small>
       </div>
     </div>
     <div class="card-action">
@@ -58,7 +54,8 @@
 
 <script>
 import useVuelidate from '@vuelidate/core';
-import { required, email, minLength } from '@vuelidate/validators';
+import { required, email } from '@vuelidate/validators';
+import messages from '@/utils/messages';
 
 export default {
   name: 'login',
@@ -69,8 +66,13 @@ export default {
   }),
   validations: () => ({
     email: { required, email },
-    password: { required, minLength: minLength(12) },
+    password: { required },
   }),
+  mounted() {
+    if (messages[this.$route.query.message]) {
+      this.$message(messages[this.$route.query.message]);
+    }
+  },
   methods: {
     async submitHandler() {
       const isFormCorrect = await this.v$.$validate();
