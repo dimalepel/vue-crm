@@ -7,7 +7,8 @@
           id="email"
           type="text"
           v-model.trim="email"
-          :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response) || (v$.email.$dirty && !v$.email.email.$response) }"
+          :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response)
+          || (v$.email.$dirty && !v$.email.email.$response) }"
         >
         <label for="email">Email</label>
         <small
@@ -83,8 +84,13 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(formData);
-      this.$router.push('/');
+
+      try {
+        await this.$store.dispatch('login', formData);
+        this.$router.push('/');
+      } catch (e) {
+        console.log(e); // TODO: show error message used in auth.js
+      }
     },
   },
 };
