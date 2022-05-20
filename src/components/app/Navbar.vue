@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('toggleSidebar')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{ dateFormatting('datetime') }}</span>
+        <span class="black-text">{{ dateFilter('datetime') }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -16,7 +16,7 @@
             data-target="dropdown"
             ref="dropdown"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -51,7 +51,7 @@ export default {
       await this.$store.dispatch('logout');
       this.$router.push('/login?message=logout');
     },
-    dateFormatting(format = 'date') {
+    dateFilter(format = 'date') {
       const options = {};
 
       if (format.includes('date')) {
@@ -67,6 +67,11 @@ export default {
       }
 
       return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date));
+    },
+  },
+  computed: {
+    name() {
+      return this.$store.getters.info.name;
     },
   },
   mounted() {

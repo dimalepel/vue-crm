@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import messagePlugin from '@/utils/message.plugin';
+import Loader from '@/components/app/Loader.vue';
 import firebase from 'firebase/compat/app';
 import App from './App.vue';
 import './registerServiceWorker';
@@ -28,5 +29,7 @@ firebase.auth().onAuthStateChanged(() => {
       .use(store)
       .use(router)
       .mount('#app');
+
+    app.component('Loader', Loader);
   }
 });
