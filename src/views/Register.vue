@@ -110,6 +110,7 @@ export default {
       if (!isFormCorrect) {
         return;
       }
+
       const formData = {
         email: this.email,
         password: this.password,
