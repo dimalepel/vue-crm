@@ -144,7 +144,7 @@ export default {
 
       if (this.canCreateRecord) {
         const formData = {
-          id: this.category,
+          categoryId: this.category,
           amount: this.amount,
           description: this.description,
           type: this.type,

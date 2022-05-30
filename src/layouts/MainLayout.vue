@@ -17,7 +17,7 @@
       </main>
 
       <div class="fixed-action-btn">
-        <router-link class="btn-floating btn-large blue" to="/record">
+        <router-link class="btn-floating btn-large blue" to="/record" v-tooltip="'Создать новую запись'">
           <i class="large material-icons">add</i>
         </router-link>
       </div>
@@ -47,6 +47,23 @@ export default {
     Loader,
     Navbar,
     Sidebar,
+  },
+  directives: {
+    tooltip: {
+      beforeMount: (element, { value }) => {
+        M.Tooltip.init(element, {
+          html: value,
+          position: 'left',
+        });
+      },
+      unmounted: (element) => {
+        const tooltip = M.tooltip.getInstance(element);
+
+        if (tooltip && tooltip.destroy) {
+          tooltip.destroy();
+        }
+      },
+    },
   },
 };
 </script>
