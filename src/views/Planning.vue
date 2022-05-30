@@ -65,8 +65,6 @@ export default {
       const tooltipValue = cat.limit - spend;
       const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${this.currencyFilter(Math.abs(tooltipValue))}`;
 
-      console.log(tooltip)
-
       return {
         ...cat,
         progressPercent,
@@ -87,6 +85,23 @@ export default {
         style: 'currency',
         currency,
       }).format(value);
+    },
+  },
+  directives: {
+    tooltip: {
+      beforeMount: (element, { value }) => {
+        M.Tooltip.init(element, {
+          html: value,
+          position: 'top',
+        });
+      },
+      beforeUpdate: (element) => {
+        const tooltip = M.tooltip.getInstance(element);
+
+        if (tooltip && tooltip.destroy) {
+          tooltip.destroy();
+        }
+      },
     },
   },
 };
