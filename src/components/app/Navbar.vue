@@ -53,6 +53,7 @@ export default {
     },
     dateFilter(format = 'date') {
       const options = {};
+      const locale = this.$store.getters.info.locale || 'ru-RU';
 
       if (format.includes('date')) {
         options.day = '2-digit';
@@ -66,7 +67,7 @@ export default {
         options.second = '2-digit';
       }
 
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date));
+      return new Intl.DateTimeFormat(locale, options).format(new Date(this.date));
     },
   },
   computed: {
