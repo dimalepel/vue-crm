@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import messagePlugin from '@/utils/message.plugin';
+import Paginate from 'vuejs-paginate-next';
 import Loader from '@/components/app/Loader.vue';
 import firebase from 'firebase/compat/app';
 import App from './App.vue';
@@ -30,6 +31,7 @@ firebase.auth().onAuthStateChanged(() => {
       .use(router)
       .mount('#app');
 
+    app.component('Paginate', Paginate);
     app.component('Loader', Loader);
   }
 });
