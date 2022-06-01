@@ -9,7 +9,7 @@
           :key="cur"
           class="currency-line">
           <span>
-            {{ currencyFilter(getCurrency(cur), cur) }}
+            {{ $filters.currencyFilter(getCurrency(cur), cur) }}
           </span>
         </p>
       </div>
@@ -36,12 +36,6 @@ export default {
   methods: {
     getCurrency(currency) {
       return Math.floor(this.base * this.rates[currency]);
-    },
-    currencyFilter(value, currency = 'BYN') {
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-      }).format(value);
     },
   },
 };

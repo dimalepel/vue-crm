@@ -1,14 +1,17 @@
 import { createApp } from 'vue';
 import messagePlugin from '@/utils/message.plugin';
-import Paginate from 'vuejs-paginate-next';
 import Loader from '@/components/app/Loader.vue';
+import Paginate from 'vuejs-paginate-next';
 import firebase from 'firebase/compat/app';
+import dateFilter from '@/filters/date.filter';
+import currencyFilter from '@/filters/currency.filter';
 import App from './App.vue';
-import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import tooltipDirective from './directives/tooltip.directive';
+import localizeFilter from './filters/localize.filter';
 import 'materialize-css/dist/js/materialize.min';
-
+import './registerServiceWorker';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
 
@@ -26,12 +29,26 @@ let app;
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App)
-      .use(messagePlugin)
       .use(store)
       .use(router)
-      .mount('#app');
+      .use(messagePlugin)
+      //.use(createMetaManager())
+      .component('Loader', Loader)
+      .component('Paginate', Paginate)
+      .directive('tooltip', tooltipDirective);
 
-    app.component('Paginate', Paginate);
-    app.component('Loader', Loader);
+    app.config.globalProperties.$filters = {
+      localizeFilter(value) {
+        return localizeFilter(value);
+      },
+      dateFilter(value, format = 'date') {
+        return dateFilter(value, format);
+      },
+      currencyFilter(value, currency = 'BYN') {
+        return currencyFilter(value, currency);
+      },
+    };
+
+    app.mount('#app');
   }
 });

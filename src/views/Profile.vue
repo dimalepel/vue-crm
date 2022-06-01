@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ localizeFilter('ProfileTitle') }}</h3>
+      <h3>{{ $filters.localizeFilter('ProfileTitle') }}</h3>
     </div>
 
     <form class="form" @submit.prevent="submitHandler">
@@ -12,11 +12,11 @@
           v-model="name"
           :class="{ invalid: v$.name.$dirty && !v$.name.required.$response }"
         >
-        <label for="description">{{ localizeFilter('NameFieldLabel') }}</label>
+        <label for="description">{{ $filters.localizeFilter('NameFieldLabel') }}</label>
         <span
           class="helper-text invalid"
           v-if="v$.name.$dirty && !v$.name.required.$response"
-        >{{ localizeFilter('EmptyNameFieldError') }}</span>
+        >{{ $filters.localizeFilter('EmptyNameFieldError') }}</span>
       </div>
 
       <div class="switch">
@@ -29,7 +29,7 @@
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        {{ localizeFilter('UpdateButtonText') }}
+        {{ $filters.localizeFilter('UpdateButtonText') }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// TODO: create global methods for localization -> https://v3.ru.vuejs.org/ru/guide/migration/filters.html#глобальные-фильтры
 import { mapGetters, mapActions } from 'vuex';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
@@ -65,14 +64,6 @@ export default {
   },
   methods: {
     ...mapActions(['updateInfo']),
-    localizeFilter(key) {
-      const locales = {
-        'ru-RU': ru,
-        'en-US': en,
-      };
-      const locale = this.$store.getters.info.locale || 'ru-RU';
-      return locales[locale][key] || `[Localize error]: key ${key} not found`;
-    },
     async submitHandler() {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) {

@@ -17,8 +17,8 @@
       :key="record.id"
     >
       <td>{{ idx + 1 }}</td>
-      <td>{{ currencyFilter(record.amount) }}</td>
-      <td>{{ dateFilter(record.date) }}</td>
+      <td>{{ $filters.currencyFilter(record.amount) }}</td>
+      <td>{{ $filters.dateFilter(record.date, 'date') }}</td>
       <td>{{ record.categoryName }}</td>
       <td>
         <span class="white-text badge"
@@ -50,29 +50,6 @@ export default {
   methods: {
     getCurrency(currency) {
       return Math.floor(this.base * this.rates[currency]);
-    },
-    currencyFilter(value, currency = 'BYN') {
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-      }).format(value);
-    },
-    dateFilter(date, format = 'date') {
-      const options = {};
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(date));
     },
   },
   directives: {

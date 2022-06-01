@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('toggleSidebar')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{ dateFilter('datetime') }}</span>
+        <span class="black-text">{{ $filters.dateFilter(date, 'datetime') }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -50,24 +50,6 @@ export default {
     async logout() {
       await this.$store.dispatch('logout');
       this.$router.push('/login?message=logout');
-    },
-    dateFilter(format = 'date') {
-      const options = {};
-      const locale = this.$store.getters.info.locale || 'ru-RU';
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat(locale, options).format(new Date(this.date));
     },
   },
   computed: {

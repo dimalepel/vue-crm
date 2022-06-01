@@ -21,7 +21,7 @@
           >
             <td>{{ cur }}</td>
             <td>{{ rates[cur].toFixed(4) }}</td>
-            <td>{{ dateFilter('date') }}</td>
+            <td>{{ $filters.dateFilter(date, 'date') }}</td>
           </tr>
           </tbody>
         </table>
@@ -44,24 +44,5 @@ export default {
       'EUR',
     ],
   }),
-  methods: {
-    dateFilter(format = 'date') {
-      const options = {};
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date));
-    },
-  },
 };
 </script>
