@@ -1,6 +1,16 @@
 {
   "ProfileTitle": "Profile",
+  "BillTitle": "Bill",
+  "HistoryTitle": "History",
+  "PlanningTitle": "Planning",
+  "NewRecordTitle": "New Record",
+  "CategoriesTitle": "Categories",
   "NameFieldLabel": "Name",
   "EmptyNameFieldError": "Empty name field",
-  "UpdateButtonText": "Update"
+  "UpdateButtonText": "Update",
+  "NewRecord": "Create a new record",
+  "Logout": "Logout",
+  "TitleLabel": "Title",
+  "LimitLabel": "Limit",
+  "EmptyCategoriesFieldError": "Enter the category name"
 }

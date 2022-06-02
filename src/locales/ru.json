@@ -1,6 +1,16 @@
 {
   "ProfileTitle": "Профиль",
+  "BillTitle": "Счет",
+  "HistoryTitle": "История",
+  "PlanningTitle": "Планирование",
+  "NewRecordTitle": "Новая запись",
+  "CategoriesTitle": "Категории",
   "NameFieldLabel": "Имя",
   "EmptyNameFieldError": "Имя не должно быть пустым",
-  "UpdateButtonText": "Обновить"
+  "UpdateButtonText": "Обновить",
+  "NewRecord": "Создать новую запись",
+  "Logout": "Выйти",
+  "TitleLabel": "Название",
+  "LimitLabel": "Лимит",
+  "EmptyCategoriesFieldError": "Введите название категории"
 }

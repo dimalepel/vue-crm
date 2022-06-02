@@ -13,11 +13,11 @@
             v-model="title"
             :class="{ invalid: v$.title.$dirty && !v$.title.required.$response }"
           >
-          <label for="name">Название</label>
+          <label for="name">{{ $filters.localizeFilter('TitleLabel') }}</label>
           <span
             class="helper-text invalid"
             v-if="v$.title.$dirty && !v$.title.required.$response"
-          >Введите название категории</span>
+          >{{ $filters.localizeFilter('EmptyCategoriesFieldError') }}</span>
         </div>
 
         <div class="input-field">
@@ -27,7 +27,7 @@
             v-model.number="limit"
             :class="{ invalid: v$.limit.$dirty && !v$.limit.minValue.$response }"
           >
-          <label for="limit">Лимит</label>
+          <label for="limit">{{ $filters.localizeFilter('LimitLabel') }}</label>
           <span
             class="helper-text invalid"
             v-if="v$.limit.$dirty && !v$.limit.minValue.$response"

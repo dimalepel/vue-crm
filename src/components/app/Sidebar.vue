@@ -11,7 +11,7 @@
       <li
         :class="[ isActive && 'active' ]"
       >
-        <a :href="href" class="waves-effect waves-orange pointer">{{ link.title }}</a>
+        <a :href="href" class="waves-effect waves-orange pointer">{{ $filters.localizeFilter(link.title) }}</a>
       </li>
     </router-link>
   </ul>
@@ -22,11 +22,11 @@ export default {
   props: ['value'],
   data: () => ({
     links: [
-      { title: 'Счет', url: '/' },
-      { title: 'История', url: '/history' },
-      { title: 'Планирование', url: '/planning' },
-      { title: 'Новая запись', url: '/record' },
-      { title: 'Категории', url: '/categories' },
+      { title: 'BillTitle', url: '/' },
+      { title: 'HistoryTitle', url: '/history' },
+      { title: 'PlanningTitle', url: '/planning' },
+      { title: 'NewRecordTitle', url: '/record' },
+      { title: 'CategoriesTitle', url: '/categories' },
     ],
   }),
 };
