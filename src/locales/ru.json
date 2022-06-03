@@ -28,5 +28,8 @@
   "ShowRecord": "Посмотреть запись",
   "Income": "Доход",
   "Outcome": "Расход",
-  "Amount": "Сумма"
+  "Amount": "Сумма",
+  "Description": "Описание",
+  "RecordNotFoundStart": "Запись с",
+  "RecordNotFoundEnd": "не найдена"
 }

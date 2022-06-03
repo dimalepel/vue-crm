@@ -28,5 +28,8 @@
   "ShowRecord": "Show record",
   "Income": "Income",
   "Outcome": "Outcome",
-  "Amount": "Amount"
+  "Amount": "Amount",
+  "Description": "Description",
+  "RecordNotFoundStart": "Record with",
+  "RecordNotFoundEnd": "not found"
 }

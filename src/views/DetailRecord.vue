@@ -3,9 +3,13 @@
     <Loader v-if="loading"/>
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
+        <router-link
+          to="/history"
+          class="breadcrumb">{{ $filters.localizeFilter('HistoryTitle') }}</router-link>
         <a @click.prevent class="breadcrumb">
-          {{ record.type === 'income' ? 'Доход' : 'Расход' }}
+          {{ record.type === 'income'
+          ? $filters.localizeFilter('Income')
+          : $filters.localizeFilter('Outcome') }}
         </a>
       </div>
       <div class="row">
@@ -14,17 +18,17 @@
             :class="record.type === 'income' ? 'green' : 'red'"
           >
             <div class="card-content white-text">
-              <p>Описание: {{ record.description }}</p>
-              <p>Сумма: {{ currencyFilter(record.amount) }}</p>
-              <p>Категория: {{ record.categoryName }}</p>
+              <p>{{ $filters.localizeFilter('Description') }}: {{ record.description }}</p>
+              <p>{{ $filters.localizeFilter('Amount') }}: {{ $filters.currencyFilter(record.amount) }}</p>
+              <p>{{ $filters.localizeFilter('CategoryTitle') }}: {{ record.categoryName }}</p>
 
-              <small>{{ dateFilter(record.date, 'datetime') }}</small>
+              <small>{{ $filters.dateFilter(record.date, 'datetime') }}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <p class="center" v-else>Запись с id=<strong>{{ $route.params.id }}</strong> не найдена.</p>
+    <p class="center" v-else>{{ $filters.localizeFilter('RecordNotFoundStart') }} id=<strong>{{ $route.params.id }}</strong> {{ $filters.localizeFilter('RecordNotFoundEnd') }}.</p>
   </div>
 </template>
 
@@ -50,29 +54,6 @@ export default {
   methods: {
     getCurrency(currency) {
       return Math.floor(this.base * this.rates[currency]);
-    },
-    currencyFilter(value, currency = 'BYN') {
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-      }).format(value);
-    },
-    dateFilter(date, format = 'date') {
-      const options = {};
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(date));
     },
   },
 };
