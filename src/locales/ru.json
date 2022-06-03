@@ -10,6 +10,7 @@
   "EmptyNameFieldError": "Имя не должно быть пустым",
   "UpdateButtonText": "Обновить",
   "NewRecord": "Создать новую запись",
+  "NewCategory": "Создать новую категорию",
   "Logout": "Выйти",
   "TitleLabel": "Название",
   "LimitLabel": "Лимит",
@@ -21,6 +22,7 @@
   "CurrencyType": "Курс",
   "RecordHistoryTitle": "История записей",
   "EmptyRecord": "Записей пока нет.",
+  "EmptyCategory": "Категорий пока нет.",
   "Back": "Назад",
   "Next": "Вперед",
   "Open": "Открыть",
@@ -31,5 +33,7 @@
   "Amount": "Сумма",
   "Description": "Описание",
   "RecordNotFoundStart": "Запись с",
-  "RecordNotFoundEnd": "не найдена"
+  "RecordNotFoundEnd": "не найдена",
+  "ExceedingBy": "Превышение на",
+  "Left": "Осталось"
 }

@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
+      <h3>{{ $filters.localizeFilter('PlanningTitle') }}</h3>
       <h4>{{ $filters.currencyFilter(info.bill) }}</h4>
     </div>
 
     <Loader v-if="loading"/>
 
-    <p class="center" v-else-if="!categories.length">Категорий пока нет. <router-link to="/categories">Добавить новую категорию.</router-link></p>
+    <p class="center" v-else-if="!categories.length">{{ $filters.localizeFilter('EmptyCategory') }} <router-link to="/categories">{{ $filters.localizeFilter('NewCategory') }}</router-link></p>
 
     <section v-else>
       <div
@@ -63,7 +63,7 @@ export default {
           : 'red';
 
       const tooltipValue = cat.limit - spend;
-      const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${this.$filters.currencyFilter(Math.abs(tooltipValue))}`;
+      const tooltip = `${tooltipValue < 0 ? this.$filters.localizeFilter('ExceedingBy') : this.$filters.localizeFilter('Left')} ${this.$filters.currencyFilter(Math.abs(tooltipValue))}`;
 
       return {
         ...cat,

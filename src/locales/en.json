@@ -3,13 +3,14 @@
   "BillTitle": "Bill",
   "HistoryTitle": "History",
   "PlanningTitle": "Planning",
-  "NewRecordTitle": "New Record",
+  "NewRecordTitle": "New record",
   "CategoriesTitle": "Categories",
   "CategoryTitle": "Category",
   "NameFieldLabel": "Name",
   "EmptyNameFieldError": "Empty name field",
   "UpdateButtonText": "Update",
   "NewRecord": "Create a new record",
+  "NewCategory": "Create a new category",
   "Logout": "Logout",
   "TitleLabel": "Title",
   "LimitLabel": "Limit",
@@ -21,6 +22,7 @@
   "CurrencyType": "Rate",
   "RecordHistoryTitle": "Record history",
   "EmptyRecord": "There are no records yet.",
+  "EmptyCategory": "There are no categories yet.",
   "Back": "Back",
   "Next": "Next",
   "Open": "Open",
@@ -31,5 +33,7 @@
   "Amount": "Amount",
   "Description": "Description",
   "RecordNotFoundStart": "Record with",
-  "RecordNotFoundEnd": "not found"
+  "RecordNotFoundEnd": "not found",
+  "ExceedingBy": "Exceeding by",
+  "Left": "Left"
 }
