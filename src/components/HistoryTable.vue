@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Сумма</th>
-      <th>Дата</th>
-      <th>Категория</th>
-      <th>Тип</th>
-      <th>Открыть</th>
+      <th>{{ $filters.localizeFilter('Amount') }}</th>
+      <th>{{ $filters.localizeFilter('Date') }}</th>
+      <th>{{ $filters.localizeFilter('CategoryTitle') }}</th>
+      <th>{{ $filters.localizeFilter('Type') }}</th>
+      <th>{{ $filters.localizeFilter('Open') }}</th>
     </tr>
     </thead>
 
@@ -29,7 +29,7 @@
         <button
           class="btn-small btn"
           @click="$router.push('/detail/' + record.id)"
-          v-tooltip="'Посмотреть запись'"
+          v-tooltip="this.$filters.localizeFilter('ShowRecord')"
         >
           <i class="material-icons">open_in_new</i>
         </button>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ $filters.localizeFilter('RecordHistoryTitle') }}</h3>
     </div>
 
     <div class="history-chart">
@@ -10,7 +10,9 @@
 
     <Loader v-if="loading" />
 
-    <p class="center" v-else-if="!records.length">Записей пока нет. <router-link to="/record">Добавить новую запись.</router-link></p>
+    <p class="center" v-else-if="!records.length">
+      {{ $filters.localizeFilter('EmptyRecord') }}
+      <router-link to="/record">{{ $filters.localizeFilter('NewRecord') }}.</router-link></p>
 
     <section v-else>
       <HistoryTable :records="items" />
@@ -19,8 +21,8 @@
         v-model="page"
         :page-count="pageCount"
         :click-handler="pageChangeHandler"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
+        :prev-text="this.$filters.localizeFilter('Back')"
+        :next-text="this.$filters.localizeFilter('Next')"
         :container-class="'pagination'"
         :page-class="'waves-effect'"
       />
@@ -52,7 +54,7 @@ export default {
         ...record,
         categoryName: categories.find(cat => cat.id === record.categoryId).title,
         typeClass: record.type === 'income' ? 'green' : 'red',
-        typeText: record.type === 'income' ? 'Доход' : 'Расход',
+        typeText: record.type === 'income' ? this.$filters.localizeFilter('Income') : this.$filters.localizeFilter('Outcome'),
       };
     }));
 
