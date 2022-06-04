@@ -35,5 +35,9 @@
   "RecordNotFoundStart": "Record with",
   "RecordNotFoundEnd": "not found",
   "ExceedingBy": "Exceeding by",
-  "Left": "Left"
+  "Left": "Left",
+  "SelectCategory": "Select a category",
+  "MinimumValue": "Minimum value",
+  "CreateButtonText": "Create",
+  "EmptyDescription": "Enter a description"
 }

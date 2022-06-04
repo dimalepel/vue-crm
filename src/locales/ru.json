@@ -35,5 +35,9 @@
   "RecordNotFoundStart": "Запись с",
   "RecordNotFoundEnd": "не найдена",
   "ExceedingBy": "Превышение на",
-  "Left": "Осталось"
+  "Left": "Осталось",
+  "SelectCategory": "Выберите категорию",
+  "MinimumValue": "Минимальное значение",
+  "CreateButtonText": "Создать",
+  "EmptyDescription": "Введите описание"
 }
