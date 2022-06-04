@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Создать</h4>
+        <h4>{{ $filters.localizeFilter('CreateTitle') }}</h4>
       </div>
 
       <form @submit.prevent="submitHandler">
@@ -13,11 +13,11 @@
             v-model="title"
             :class="{ invalid: v$.title.$dirty && !v$.title.required.$response }"
           >
-          <label for="name">Название</label>
+          <label for="name">{{ $filters.localizeFilter('TitleLabel') }}</label>
           <span
             class="helper-text invalid"
             v-if="v$.title.$dirty && !v$.title.required.$response"
-          >Введите название категории</span>
+          >{{ $filters.localizeFilter('EmptyCategoriesFieldError') }}</span>
         </div>
 
         <div class="input-field">
@@ -27,15 +27,15 @@
             v-model.number="limit"
             :class="{ invalid: v$.limit.$dirty && !v$.limit.minValue.$response }"
           >
-          <label for="limit">Лимит</label>
+          <label for="limit">{{ $filters.localizeFilter('LimitLabel') }}</label>
           <span
             class="helper-text invalid"
             v-if="v$.limit.$dirty && !v$.limit.minValue.$response"
-          >Минимальное значение {{ v$.limit.minValue.$params.min }}</span>
+          >{{ $filters.localizeFilter('MinimumValue') }} {{ v$.limit.minValue.$params.min }}</span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Создать
+          {{ $filters.localizeFilter('CreateButtonText') }}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -77,7 +77,7 @@ export default {
         this.title = '';
         this.limit = 1;
         this.v$.$reset();
-        this.$message('Категория была создана');
+        this.$message(this.$filters.localizeFilter('CategoryCreated'));
         this.$emit('created', category);
       } catch (e) {}
     },

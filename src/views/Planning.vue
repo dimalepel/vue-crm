@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
-      <h4>{{ currencyFilter(info.bill) }}</h4>
+      <h3>{{ $filters.localizeFilter('PlanningTitle') }}</h3>
+      <h4>{{ $filters.currencyFilter(info.bill) }}</h4>
     </div>
 
     <Loader v-if="loading"/>
 
-    <p class="center" v-else-if="!categories.length">Категорий пока нет. <router-link to="/categories">Добавить новую категорию.</router-link></p>
+    <p class="center" v-else-if="!categories.length">{{ $filters.localizeFilter('EmptyCategory') }} <router-link to="/categories">{{ $filters.localizeFilter('NewCategory') }}</router-link></p>
 
     <section v-else>
       <div
@@ -16,9 +16,9 @@
       >
         <p>
           <strong>{{ cat.title }}:</strong>
-          {{ currencyFilter(cat.spend) }} из {{ currencyFilter(cat.limit) }}
+          {{ $filters.currencyFilter(cat.spend) }} из {{ $filters.currencyFilter(cat.limit) }}
         </p>
-        <div class="progress" v-tooltip="cat.tooltip">
+        <div class="progress" v-tooltip="{ text: cat.tooltip }">
           <div
             class="determinate"
             :class="[cat.progressColor]"
@@ -63,7 +63,7 @@ export default {
           : 'red';
 
       const tooltipValue = cat.limit - spend;
-      const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${this.currencyFilter(Math.abs(tooltipValue))}`;
+      const tooltip = `${tooltipValue < 0 ? this.$filters.localizeFilter('ExceedingBy') : this.$filters.localizeFilter('Left')} ${this.$filters.currencyFilter(Math.abs(tooltipValue))}`;
 
       return {
         ...cat,
@@ -80,29 +80,12 @@ export default {
     getCurrency(currency) {
       return Math.floor(this.base * this.rates[currency]);
     },
-    currencyFilter(value, currency = 'BYN') {
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-      }).format(value);
-    },
-  },
-  directives: {
-    tooltip: {
-      beforeMount: (element, { value }) => {
-        M.Tooltip.init(element, {
-          html: value,
-          position: 'top',
-        });
-      },
-      beforeUpdate: (element) => {
-        const tooltip = M.tooltip.getInstance(element);
-
-        if (tooltip && tooltip.destroy) {
-          tooltip.destroy();
-        }
-      },
-    },
   },
 };
 </script>
+
+<style scoped>
+  .progress {
+    height: 8px;
+  }
+</style>

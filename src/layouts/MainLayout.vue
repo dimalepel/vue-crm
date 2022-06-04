@@ -17,7 +17,11 @@
       </main>
 
       <div class="fixed-action-btn">
-        <router-link class="btn-floating btn-large blue" to="/record" v-tooltip="'Создать новую запись'">
+        <router-link
+          class="btn-floating btn-large blue"
+          to="/record"
+          v-tooltip="{ text: this.$filters.localizeFilter('NewRecord'), position: 'left' }"
+        >
           <i class="large material-icons">add</i>
         </router-link>
       </div>
@@ -26,9 +30,9 @@
 </template>
 
 <script>
-import Navbar from '@/components/app/Navbar';
-import Sidebar from '@/components/app/Sidebar';
-import Loader from '@/components/app/Loader';
+import Navbar from '@/components/app/Navbar.vue';
+import Sidebar from '@/components/app/Sidebar.vue';
+import Loader from '@/components/app/Loader.vue';
 import messages from '@/utils/messages';
 
 export default {
@@ -48,23 +52,6 @@ export default {
     Loader,
     Navbar,
     Sidebar,
-  },
-  directives: {
-    tooltip: {
-      beforeMount: (element, { value }) => {
-        M.Tooltip.init(element, {
-          html: value,
-          position: 'left',
-        });
-      },
-      unmounted: (element) => {
-        const tooltip = M.tooltip.getInstance(element);
-
-        if (tooltip && tooltip.destroy) {
-          tooltip.destroy();
-        }
-      },
-    },
   },
   computed: {
     error() {

@@ -3,14 +3,14 @@
     <div class="card orange darken-3 bill-card">
       <div class="card-content white-text">
         <div class="card-header">
-          <span class="card-title">Курс валют</span>
+          <span class="card-title">{{ $filters.localizeFilter('CurrencyAmountTitle') }}</span>
         </div>
         <table>
           <thead>
           <tr>
-            <th>Валюта</th>
-            <th>Курс</th>
-            <th>Дата</th>
+            <th>{{ $filters.localizeFilter('Currency') }}</th>
+            <th>{{ $filters.localizeFilter('CurrencyType') }}</th>
+            <th>{{ $filters.localizeFilter('Date') }}</th>
           </tr>
           </thead>
 
@@ -21,7 +21,7 @@
           >
             <td>{{ cur }}</td>
             <td>{{ rates[cur].toFixed(4) }}</td>
-            <td>{{ dateFilter('date') }}</td>
+            <td>{{ $filters.dateFilter(date, 'date') }}</td>
           </tr>
           </tbody>
         </table>
@@ -44,24 +44,5 @@ export default {
       'EUR',
     ],
   }),
-  methods: {
-    dateFilter(format = 'date') {
-      const options = {};
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date));
-    },
-  },
 };
 </script>

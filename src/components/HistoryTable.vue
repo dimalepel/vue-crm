@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Сумма</th>
-      <th>Дата</th>
-      <th>Категория</th>
-      <th>Тип</th>
-      <th>Открыть</th>
+      <th>{{ $filters.localizeFilter('Amount') }}</th>
+      <th>{{ $filters.localizeFilter('Date') }}</th>
+      <th>{{ $filters.localizeFilter('CategoryTitle') }}</th>
+      <th>{{ $filters.localizeFilter('Type') }}</th>
+      <th>{{ $filters.localizeFilter('Open') }}</th>
     </tr>
     </thead>
 
@@ -17,8 +17,8 @@
       :key="record.id"
     >
       <td>{{ idx + 1 }}</td>
-      <td>{{ currencyFilter(record.amount) }}</td>
-      <td>{{ dateFilter(record.date) }}</td>
+      <td>{{ $filters.currencyFilter(record.amount) }}</td>
+      <td>{{ $filters.dateFilter(record.date, 'date') }}</td>
       <td>{{ record.categoryName }}</td>
       <td>
         <span class="white-text badge"
@@ -29,7 +29,7 @@
         <button
           class="btn-small btn"
           @click="$router.push('/detail/' + record.id)"
-          v-tooltip="'Посмотреть запись'"
+          v-tooltip="this.$filters.localizeFilter('ShowRecord')"
         >
           <i class="material-icons">open_in_new</i>
         </button>
@@ -50,29 +50,6 @@ export default {
   methods: {
     getCurrency(currency) {
       return Math.floor(this.base * this.rates[currency]);
-    },
-    currencyFilter(value, currency = 'BYN') {
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-      }).format(value);
-    },
-    dateFilter(date, format = 'date') {
-      const options = {};
-
-      if (format.includes('date')) {
-        options.day = '2-digit';
-        options.month = 'long';
-        options.year = 'numeric';
-      }
-
-      if (format.includes('time')) {
-        options.hour = '2-digit';
-        options.minute = '2-digit';
-        options.second = '2-digit';
-      }
-
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(date));
     },
   },
   directives: {
