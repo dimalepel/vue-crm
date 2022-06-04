@@ -5,6 +5,7 @@ import Paginate from 'vuejs-paginate-next';
 import firebase from 'firebase/compat/app';
 import dateFilter from '@/filters/date.filter';
 import currencyFilter from '@/filters/currency.filter';
+import VueMeta from 'vue-meta';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -32,7 +33,7 @@ firebase.auth().onAuthStateChanged(() => {
       .use(store)
       .use(router)
       .use(messagePlugin)
-      //.use(createMetaManager())
+      .use(VueMeta)
       .component('Loader', Loader)
       .component('Paginate', Paginate)
       .directive('tooltip', tooltipDirective);
