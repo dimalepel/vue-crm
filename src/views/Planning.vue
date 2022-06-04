@@ -83,3 +83,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .progress {
+    height: 8px;
+  }
+</style>

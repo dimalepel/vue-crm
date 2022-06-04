@@ -39,5 +39,9 @@
   "SelectCategory": "Select a category",
   "MinimumValue": "Minimum value",
   "CreateButtonText": "Create",
-  "EmptyDescription": "Enter a description"
+  "EmptyDescription": "Enter a description",
+  "SuccessfullyRecord": "The record was created successfully",
+  "InsufficientFunds": "Insufficient funds in the account",
+  "CategoryCreated": "The category has been created",
+  "EditTitle": "Edit"
 }

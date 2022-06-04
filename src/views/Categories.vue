@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{ $filters.localizeFilter('CategoriesTitle') }}</h3>
     </div>
     <section>
 
@@ -19,7 +19,7 @@
           :key="categories.length + updateCount"
         />
 
-        <p v-else class="center">Категорий пока нет</p>
+        <p v-else class="center">{{ $filters.localizeFilter('EmptyCategory') }}</p>
       </div>
     </section>
   </div>

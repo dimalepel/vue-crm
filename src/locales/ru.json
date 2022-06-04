@@ -39,5 +39,9 @@
   "SelectCategory": "Выберите категорию",
   "MinimumValue": "Минимальное значение",
   "CreateButtonText": "Создать",
-  "EmptyDescription": "Введите описание"
+  "EmptyDescription": "Введите описание",
+  "SuccessfullyRecord": "Запись успешно создана",
+  "InsufficientFunds": "Недостаточно средств на счете",
+  "CategoryCreated": "Категория была создана",
+  "EditTitle": "Редактировать"
 }

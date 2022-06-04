@@ -161,13 +161,13 @@ export default {
             : this.info.bill - this.amount;
 
           await this.$store.dispatch('updateInfo', { bill });
-          this.$message('Запись успешно создана');
+          this.$message(this.$filters.localizeFilter('SuccessfullyRecord'));
           this.v$.$reset();
           this.amount = 1;
           this.description = '';
         } catch (e) {}
       } else {
-        this.$message(`Недостаточно средств на счете (${this.amount - this.info.bill})`);
+        this.$message(`${this.$filters.localizeFilter('InsufficientFunds')} (${this.amount - this.info.bill})`);
       }
     },
   },
