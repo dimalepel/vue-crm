@@ -60,5 +60,11 @@
   "UnknownError": "Что-то пошло не так!",
   "PasswordMinLengthError": "Пароль должен быть не менее",
   "NameMinLengthError": "Имя должно быть не менее",
-  "AgreeRules": "С правилами согласен"
+  "AgreeRules": "С правилами согласен",
+  "Error": "Ошибка",
+  "LogoutMessage": "Вы вышли из системы!",
+  "LoginMessage": "Вы не авторизованы. Войдите в систему.",
+  "UserNotFound": "Вы ввели неверный email или пароль. Попробуйте еще раз.",
+  "WrongPassword": "Вы ввели неверный email или пароль. Попробуйте еще раз.",
+  "EmailAlreadyInUse": "Пользователь с таким email уже существует. Введите другой email."
 }

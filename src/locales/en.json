@@ -59,5 +59,11 @@
   "RegisterButtonText": "Register",
   "UnknownError": "Unknown error!",
   "PasswordMinLengthError": "The password must be at least",
-  "AgreeRules": "I agree with the rules"
+  "AgreeRules": "I agree with the rules",
+  "Error": "Error",
+  "LogoutMessage": "You are logged out!",
+  "LoginMessage": "You are not logged in. Log in.",
+  "UserNotFound": "You have entered an incorrect email or password. Try again.",
+  "WrongPassword": "You have entered an incorrect email or password. Try again.",
+  "EmailAlreadyInUse": "A user with this email already exists. Enter a different email."
 }
