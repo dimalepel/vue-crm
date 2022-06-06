@@ -21,7 +21,7 @@ export default createStore({
   },
   actions: {
     async fetchCurrency() {
-      const key = process.env.VUE_APP_FIXER;
+      const key = 'vK4iFh5HYuwT0Baf9ODMEfqqbst9U5ke';
       const myHeaders = new Headers();
       const requestOptions = {
         method: 'GET',
