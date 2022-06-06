@@ -9,7 +9,8 @@
     <p
       class="center"
       v-else-if="!categories.length"
-    >{{ $filters.localizeFilter('EmptyCategory') }} <router-link to="/categories">{{ $filters.localizeFilter('NewCategory') }}.</router-link></p>
+    >{{ $filters.localizeFilter('EmptyCategory') }} <router-link
+      to="/categories">{{ $filters.localizeFilter('NewCategory') }}.</router-link></p>
 
     <form
       class="form"
@@ -93,6 +94,7 @@
 import useVuelidate from '@vuelidate/core';
 import { minValue, required } from '@vuelidate/validators';
 import { mapGetters } from 'vuex';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'record',
@@ -110,6 +112,11 @@ export default {
     amount: { minValue: minValue(1) },
     description: { required },
   }),
+  setup() {
+    useMeta({
+      title: 'NewRecordTitle',
+    });
+  },
   async mounted() {
     this.categories = await this.$store.dispatch('fetchCategories');
     this.loading = false;

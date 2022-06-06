@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{ $filters.localizeFilter('LoginPageTitle') }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -10,15 +10,15 @@
           :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response)
           || (v$.email.$dirty && !v$.email.email.$response) }"
         >
-        <label for="email">Email</label>
+        <label for="email">{{ $filters.localizeFilter('EmailLabel') }}</label>
         <small
           v-if="v$.email.$dirty && !v$.email.required.$response"
           class="helper-text invalid"
-        >Поле Email не должно быть пустым</small>
+        >{{ $filters.localizeFilter('EmptyEmailError') }}</small>
         <small
           v-else-if="v$.email.$dirty && !v$.email.email.$response"
           class="helper-text invalid"
-        >Введите корректный Email</small>
+        >{{ $filters.localizeFilter('InvalidEmailError') }}</small>
       </div>
       <div class="input-field">
         <input
@@ -27,11 +27,11 @@
           v-model.trim="password"
           :class="{ invalid: (v$.password.$dirty && !v$.password.required.$response) }"
         >
-        <label for="password">Пароль</label>
+        <label for="password">{{ $filters.localizeFilter('PasswordLabel') }}</label>
         <small
           class="helper-text invalid"
           v-if="v$.password.$dirty && !v$.password.required.$response"
-        >Введите пароль</small>
+        >{{ $filters.localizeFilter('EmptyPasswordError') }}</small>
       </div>
     </div>
     <div class="card-action">
@@ -40,14 +40,15 @@
           class="btn waves-effect waves-light auth-submit"
           type="submit"
         >
-          Войти
+          {{ $filters.localizeFilter('EnterButtonText') }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        Нет аккаунта?
-        <router-link to="/register">Зарегистрироваться</router-link>
+        {{ $filters.localizeFilter('NoAccount') }}
+        <router-link
+          to="/register">{{ $filters.localizeFilter('RegisterButtonText') }}</router-link>
       </p>
     </div>
   </form>
@@ -57,6 +58,7 @@
 import useVuelidate from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import messages from '@/utils/messages';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'login',
@@ -69,6 +71,11 @@ export default {
     email: { required, email },
     password: { required },
   }),
+  setup() {
+    useMeta({
+      title: 'LoginPageTitle',
+    });
+  },
   mounted() {
     if (messages[this.$route.query.message]) {
       this.$message(messages[this.$route.query.message]);
@@ -88,9 +95,7 @@ export default {
       try {
         await this.$store.dispatch('login', formData);
         this.$router.push('/');
-      } catch (e) {
-        console.log(e); // TODO: show error message used in auth.js
-      }
+      } catch (e) {}
     },
   },
 };

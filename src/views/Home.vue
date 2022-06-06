@@ -33,6 +33,7 @@
 import HomeBill from '@/components/HomeBill';
 import HomeCurrency from '@/components/HomeCurrency';
 import Loader from '@/components/app/Loader';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'home',
@@ -40,6 +41,11 @@ export default {
     loading: true,
     currency: null,
   }),
+  setup() {
+    useMeta({
+      title: 'BillTitle',
+    });
+  },
   async mounted() {
     this.currency = await this.$store.dispatch('fetchCurrency');
     this.loading = false;

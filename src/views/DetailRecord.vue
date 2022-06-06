@@ -28,17 +28,28 @@
         </div>
       </div>
     </div>
-    <p class="center" v-else>{{ $filters.localizeFilter('RecordNotFoundStart') }} id=<strong>{{ $route.params.id }}</strong> {{ $filters.localizeFilter('RecordNotFoundEnd') }}.</p>
+    <p class="center"
+       v-else
+    >{{ $filters.localizeFilter('RecordNotFoundStart') }} id=<strong>
+      {{ $route.params.id }}
+    </strong> {{ $filters.localizeFilter('RecordNotFoundEnd') }}.</p>
   </div>
 </template>
 
 <script>
+import { useMeta } from 'vue-meta';
+
 export default {
   name: 'detail',
   data: () => ({
     record: null,
     loading: true,
   }),
+  setup() {
+    useMeta({
+      title: '',
+    });
+  },
   async mounted() {
     const id = this.$route.params.id;
     const record = await this.$store.dispatch('fetchRecordById', id);

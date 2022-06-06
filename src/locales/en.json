@@ -44,5 +44,15 @@
   "SuccessfullyRecord": "The record was created successfully",
   "InsufficientFunds": "Insufficient funds in the account",
   "CategoryCreated": "The category has been created",
-  "EditTitle": "Edit"
+  "EditTitle": "Edit",
+  "LoginPageTitle": "Home bookkeeping",
+  "EmailLabel": "Email",
+  "EmptyEmailError": "The Email field should not be empty",
+  "InvalidEmailError": "Enter the correct Email",
+  "EmptyPasswordError": "Enter the password",
+  "EnterButtonText": "Enter",
+  "NoAccount": "No account?",
+  "PasswordLabel": "Password",
+  "RegisterButtonText": "Register",
+  "UnknownError": "Unknown error!"
 }

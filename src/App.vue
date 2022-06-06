@@ -1,6 +1,8 @@
 <template>
   <metainfo>
-    <template v-slot:title="{ content }">{{ content ? `${content} | CRM` : `CRM` }}</template>
+    <template
+      v-slot:title="{ content }"
+    >{{ content ? `${this.$filters.localizeFilter(content)} | CRM` : `CRM` }}</template>
   </metainfo>
   <component :is="layout">
     <router-view/>

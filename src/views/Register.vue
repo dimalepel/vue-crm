@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{ $filters.localizeFilter('LoginPageTitle') }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -10,15 +10,15 @@
           :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response)
           || (v$.email.$dirty && !v$.email.email.$response) }"
         >
-        <label for="email">Email</label>
+        <label for="email">{{ $filters.localizeFilter('EmptyEmailError') }}</label>
         <small
           v-if="v$.email.$dirty && !v$.email.required.$response"
           class="helper-text invalid"
-        >Поле Email не должно быть пустым</small>
+        >{{ $filters.localizeFilter('EmailLabel') }}</small>
         <small
           v-else-if="v$.email.$dirty && !v$.email.email.$response"
           class="helper-text invalid"
-        >Введите корректный Email</small>
+        >{{ $filters.localizeFilter('InvalidEmailError') }}</small>
       </div>
       <div class="input-field">
         <input

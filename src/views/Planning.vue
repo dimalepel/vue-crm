@@ -7,7 +7,10 @@
 
     <Loader v-if="loading"/>
 
-    <p class="center" v-else-if="!categories.length">{{ $filters.localizeFilter('EmptyCategory') }} <router-link to="/categories">{{ $filters.localizeFilter('NewCategory') }}</router-link></p>
+    <p class="center"
+       v-else-if="!categories.length"
+    >{{ $filters.localizeFilter('EmptyCategory') }} <router-link
+      to="/categories">{{ $filters.localizeFilter('NewCategory') }}</router-link></p>
 
     <section v-else>
       <div
@@ -32,6 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'planning',
@@ -39,6 +43,11 @@ export default {
     loading: true,
     categories: [],
   }),
+  setup() {
+    useMeta({
+      title: 'PlanningTitle',
+    });
+  },
   computed: {
     ...mapGetters(['info']),
   },

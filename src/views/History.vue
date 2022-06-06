@@ -36,6 +36,7 @@ import Loader from '@/components/app/Loader';
 import Paginate from 'vuejs-paginate-next';
 import paginationMixin from '@/mixins/pagination.mixin';
 import { Pie } from 'vue-chartjs';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'history',
@@ -45,6 +46,11 @@ export default {
     loading: true,
     records: [],
   }),
+  setup() {
+    useMeta({
+      title: 'RecordHistoryTitle',
+    });
+  },
   async mounted() {
     this.records = await this.$store.dispatch('fetchRecords');
     const categories = await this.$store.dispatch('fetchCategories');

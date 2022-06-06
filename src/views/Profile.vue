@@ -51,14 +51,16 @@ export default {
   validations: () => ({
     name: { required },
   }),
+  setup() {
+    useMeta({
+      title: 'ProfileTitle',
+    });
+  },
   mounted() {
     this.name = this.info.name;
     this.isRuLocale = this.info.locale === 'ru-RU';
     setTimeout(() => {
       M.updateTextFields();
-    });
-    useMeta({
-      title: this.$filters.localizeFilter('ProfileTitle'),
     });
   },
   computed: {
