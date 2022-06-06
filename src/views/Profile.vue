@@ -79,7 +79,7 @@ export default {
           name: this.name,
           locale: this.isRuLocale ? 'ru-RU' : 'en-US',
         });
-        this.$message('Профиль успешно обновлен');
+        this.$message(this.$filters.localizeFilter('ProfileUpdate'));
       } catch (e) {}
     },
   },
