@@ -6,7 +6,7 @@ export default {
 
     App.config.globalProperties.$error = function (html) {
       M.toast({
-        html: `[${this.$filters.localizeFilter('Error')}]: ${this.$filters.localizeFilter(html)}`,
+        html: `[${this.$filters.localizeFilter('Error')}]: ${html}`,
       });
     };
   },

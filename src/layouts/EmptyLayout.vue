@@ -15,7 +15,7 @@ export default {
   },
   watch: {
     error(fbError) {
-      this.$error(messages[fbError.code] || this.$filters.localizeFilter('RecordNotFoundStart'));
+      this.$error(messages[fbError.code] || this.$filters.localizeFilter('UnknownError'));
     },
   },
 };
