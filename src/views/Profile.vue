@@ -40,13 +40,9 @@
 import { mapGetters, mapActions } from 'vuex';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
-import ru from '@/locales/ru.json';
-import en from '@/locales/en.json';
+import { useMeta } from 'vue-meta';
 
 export default {
-  metaInfo: {
-    title: 'Profile',
-  },
   data: () => ({
     v$: useVuelidate(),
     name: '',
@@ -60,6 +56,9 @@ export default {
     this.isRuLocale = this.info.locale === 'ru-RU';
     setTimeout(() => {
       M.updateTextFields();
+    });
+    useMeta({
+      title: this.$filters.localizeFilter('ProfileTitle'),
     });
   },
   computed: {

@@ -36,9 +36,6 @@ import Loader from '@/components/app/Loader';
 
 export default {
   name: 'home',
-  metaInfo: {
-    title: 'Home',
-  },
   data: () => ({
     loading: true,
     currency: null,
