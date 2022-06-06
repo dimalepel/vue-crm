@@ -15,7 +15,7 @@ export default {
   },
   watch: {
     error(fbError) {
-      this.$error(messages[fbError.code] || 'Что-то пошло не так!');
+      this.$error(messages[fbError.code] || this.$filters.localizeFilter('RecordNotFoundStart'));
     },
   },
 };

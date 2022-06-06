@@ -29,6 +29,7 @@
 import CategoryCreate from '@/components/CategoryCreate';
 import CategoryEdit from '@/components/CategoryEdit';
 import Loader from '@/components/app/Loader';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'categories',
@@ -37,6 +38,11 @@ export default {
     loading: true,
     updateCount: 0,
   }),
+  setup() {
+    useMeta({
+      title: 'CategoriesTitle',
+    });
+  },
   async mounted() {
     this.categories = await this.$store.dispatch('fetchCategories');
     this.loading = false;

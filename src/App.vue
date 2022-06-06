@@ -1,4 +1,9 @@
 <template>
+  <metainfo>
+    <template
+      v-slot:title="{ content }"
+    >{{ content ? `${this.$filters.localizeFilter(content)} | ${this.$filters.localizeFilter('ProjectTitle')}` : `${this.$filters.localizeFilter('ProjectTitle')}` }}</template>
+  </metainfo>
   <component :is="layout">
     <router-view/>
   </component>

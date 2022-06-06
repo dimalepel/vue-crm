@@ -40,8 +40,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
-import ru from '@/locales/ru.json';
-import en from '@/locales/en.json';
+import { useMeta } from 'vue-meta';
 
 export default {
   data: () => ({
@@ -52,6 +51,11 @@ export default {
   validations: () => ({
     name: { required },
   }),
+  setup() {
+    useMeta({
+      title: 'ProfileTitle',
+    });
+  },
   mounted() {
     this.name = this.info.name;
     this.isRuLocale = this.info.locale === 'ru-RU';
