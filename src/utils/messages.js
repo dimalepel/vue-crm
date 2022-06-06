@@ -1,7 +1,7 @@
 export default {
-  logout: this.$filters.localizeFilter('LogoutMessage'),
-  login: this.$filters.localizeFilter('LoginMessage'),
-  'auth/user-not-found': this.$filters.localizeFilter('UserNotFound'),
-  'auth/wrong-password': this.$filters.localizeFilter('WrongPassword'),
-  'auth/email-already-in-use': this.$filters.localizeFilter('EmailAlreadyInUse'),
+  logout: 'Вы вышли из системы!',
+  login: 'Вы не авторизованы. Войдите в систему.',
+  'auth/user-not-found': 'Вы ввели неверный email или пароль. Попробуйте еще раз.',
+  'auth/wrong-password': 'Вы ввели неверный email или пароль. Попробуйте еще раз.',
+  'auth/email-already-in-use': 'Пользователь с таким email уже существует. Введите другой email.',
 };

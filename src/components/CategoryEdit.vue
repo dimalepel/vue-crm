@@ -116,7 +116,7 @@ export default {
 
       try {
         await this.$store.dispatch('updateCategory', categoryData);
-        this.$message('Категория успешно обновлена');
+        this.$message(this.$filters.localizeFilter('CategoryUpdate'));
         this.$emit('updated', categoryData);
       } catch (e) {}
     },

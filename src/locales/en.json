@@ -66,5 +66,6 @@
   "UserNotFound": "You have entered an incorrect email or password. Try again.",
   "WrongPassword": "You have entered an incorrect email or password. Try again.",
   "EmailAlreadyInUse": "A user with this email already exists. Enter a different email.",
-  "ProfileUpdate": "Profile has been successfully updated"
+  "ProfileUpdate": "Profile has been successfully updated",
+  "CategoryUpdate": "Category has been successfully updated"
 }
