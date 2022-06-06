@@ -45,14 +45,20 @@
   "InsufficientFunds": "Недостаточно средств на счете",
   "CategoryCreated": "Категория была создана",
   "EditTitle": "Редактировать",
-  "LoginPageTitle": "Домашняя бухгалтерия",
+  "ProjectTitle": "Домашняя бухгалтерия",
   "EmailLabel": "Email",
   "EmptyEmailError": "Поле Email не должно быть пустым",
   "InvalidEmailError": "Введите корректный Email",
   "EmptyPasswordError": "Введите пароль",
   "EnterButtonText": "Войти",
   "NoAccount": "Нет аккаунта?",
+  "YesAccount": "Уже есть аккаунт?",
+  "LoginPageTitle": "Добро пожаловать!",
+  "RegisterPageTitle": "Регистрация",
   "PasswordLabel": "Пароль",
   "RegisterButtonText": "Зарегистрироваться",
-  "UnknownError": "Что-то пошло не так!"
+  "UnknownError": "Что-то пошло не так!",
+  "PasswordMinLengthError": "Пароль должен быть не менее",
+  "NameMinLengthError": "Имя должно быть не менее",
+  "AgreeRules": "С правилами согласен"
 }

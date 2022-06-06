@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">{{ $filters.localizeFilter('LoginPageTitle') }}</span>
+      <span class="card-title">{{ $filters.localizeFilter('ProjectTitle') }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -10,11 +10,11 @@
           :class="{ invalid: (v$.email.$dirty && !v$.email.required.$response)
           || (v$.email.$dirty && !v$.email.email.$response) }"
         >
-        <label for="email">{{ $filters.localizeFilter('EmptyEmailError') }}</label>
+        <label for="email">{{ $filters.localizeFilter('EmailLabel') }}</label>
         <small
           v-if="v$.email.$dirty && !v$.email.required.$response"
           class="helper-text invalid"
-        >{{ $filters.localizeFilter('EmailLabel') }}</small>
+        >{{ $filters.localizeFilter('EmptyEmailError') }}</small>
         <small
           v-else-if="v$.email.$dirty && !v$.email.email.$response"
           class="helper-text invalid"
@@ -28,15 +28,15 @@
           :class="{ invalid: (v$.password.$dirty && !v$.password.required.$response)
           || (v$.password.$dirty && !v$.password.minLength.$response) }"
         >
-        <label for="password">Пароль</label>
+        <label for="password">{{ $filters.localizeFilter('PasswordLabel') }}</label>
         <small
           class="helper-text invalid"
           v-if="v$.password.$dirty && !v$.password.required.$response"
-        >Введите пароль</small>
+        >{{ $filters.localizeFilter('EmptyPasswordError') }}</small>
         <small
           class="helper-text invalid"
           v-else-if="v$.password.$dirty && !v$.password.minLength.$response"
-        >Пароль должен быть не менее {{ v$.password.minLength.$params.min }} символов</small>
+        >{{ $filters.localizeFilter('PasswordMinLengthError') }} {{ v$.password.minLength.$params.min }} символов</small>
       </div>
       <div class="input-field">
         <input
@@ -46,15 +46,15 @@
           :class="{ invalid: (v$.name.$dirty && !v$.name.required.$response)
           || (v$.name.$dirty && !v$.name.minLength.$response) }"
         >
-        <label for="name">Имя</label>
+        <label for="name">{{ $filters.localizeFilter('NameFieldLabel') }}</label>
         <small
           class="helper-text invalid"
           v-if="v$.name.$dirty && !v$.name.required.$response"
-        >Введите имя</small>
+        >{{ $filters.localizeFilter('EmptyNameFieldError') }}</small>
         <small
           class="helper-text invalid"
           v-else-if="v$.name.$dirty && !v$.name.minLength.$response"
-        >Имя должно быть не менее {{ v$.name.minLength.$params.min }} символов</small>
+        >{{ $filters.localizeFilter('NameMinLengthError') }} {{ v$.name.minLength.$params.min }} символов</small>
       </div>
       <p>
         <label>
@@ -62,7 +62,7 @@
             type="checkbox"
             v-model="agree"
           />
-          <span>С правилами согласен</span>
+          <span>{{ $filters.localizeFilter('AgreeRules') }}</span>
         </label>
       </p>
     </div>
@@ -72,14 +72,14 @@
           class="btn waves-effect waves-light auth-submit"
           type="submit"
         >
-          Зарегистрироваться
+          {{ $filters.localizeFilter('RegisterButtonText') }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        Уже есть аккаунт?
-        <router-link to="/login">Войти!</router-link>
+        {{ $filters.localizeFilter('YesAccount') }}
+        <router-link to="/login">{{ $filters.localizeFilter('EnterButtonText') }}!</router-link>
       </p>
     </div>
   </form>
@@ -88,6 +88,7 @@
 <script>
 import useVuelidate from '@vuelidate/core';
 import { email, minLength, required } from '@vuelidate/validators';
+import { useMeta } from 'vue-meta';
 
 export default {
   name: 'register',
@@ -104,6 +105,11 @@ export default {
     name: { required, minLength: minLength(3) },
     agree: { checked: (value) => value },
   }),
+  setup() {
+    useMeta({
+      title: 'RegisterPageTitle',
+    });
+  },
   methods: {
     async submitHandler() {
       const isFormCorrect = await this.v$.$validate();

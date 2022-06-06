@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">{{ $filters.localizeFilter('LoginPageTitle') }}</span>
+      <span class="card-title">{{ $filters.localizeFilter('ProjectTitle') }}</span>
       <div class="input-field">
         <input
           id="email"

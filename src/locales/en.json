@@ -45,14 +45,19 @@
   "InsufficientFunds": "Insufficient funds in the account",
   "CategoryCreated": "The category has been created",
   "EditTitle": "Edit",
-  "LoginPageTitle": "Home bookkeeping",
+  "ProjectTitle": "Home bookkeeping",
   "EmailLabel": "Email",
   "EmptyEmailError": "The Email field should not be empty",
   "InvalidEmailError": "Enter the correct Email",
   "EmptyPasswordError": "Enter the password",
   "EnterButtonText": "Enter",
   "NoAccount": "No account?",
+  "YesAccount": "Have an account?",
+  "LoginPageTitle": "Welcome!",
+  "RegisterPageTitle": "Registration",
   "PasswordLabel": "Password",
   "RegisterButtonText": "Register",
-  "UnknownError": "Unknown error!"
+  "UnknownError": "Unknown error!",
+  "PasswordMinLengthError": "The password must be at least",
+  "AgreeRules": "I agree with the rules"
 }
